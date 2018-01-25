@@ -46,5 +46,9 @@ public class Player
             opponent.markMiss(row, col);
         }
     }
+    public boolean playerHasShip(int row, int col)
+    {
+        return player.hasShip(col, row);
+    }
     
 }
