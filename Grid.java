@@ -57,7 +57,7 @@ public class Grid
     }
     public void printStatus()
     {
-        System.out.print(" ");
+        System.out.print("  ");
         for (int i = 0; i < NUM_COLS; i++) 
         {
             if(i != 9) 
