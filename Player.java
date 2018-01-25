@@ -12,7 +12,7 @@ public class Player
         {
             ships[i] = new Ship(SHIP_LENGTHS[i]);
         }
-        name = playerName;
+        playerName = name;
     }
     public String getPlayerName()
     {
