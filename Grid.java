@@ -57,9 +57,9 @@ public class Grid
     }
     public void printStatus()
     {
+        System.out.print(" ");
         for (int i = 0; i < NUM_COLS; i++) 
         {
-            System.out.print(" ");
             if(i != 9) 
             {
                 System.out.print((i + 1) + " ");
@@ -93,10 +93,9 @@ public class Grid
     }
     public void printShips()
     {
-        System.out.print("");
+        System.out.print("  ");
         for (int i = 0; i < NUM_COLS; i++) 
         {
-            System.out.print(" ");
             if(i != 9) 
             {
                 System.out.print((i + 1) + " ");
