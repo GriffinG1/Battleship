@@ -27,7 +27,7 @@ public class Battleship extends ConsoleProgram
                 println("Invalid row, please try again.");
                 row = readLine("Input a row (A - J): ").toLowerCase();
             }
-            rowVal = ((int) row.charAt(0)) - 97;
+            rowVal = (int) row.charAt(0);
             int column = readInt("Input a column (1 - 10): ");
             while(column < 1 || column > 10)
             {
