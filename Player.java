@@ -1,11 +1,10 @@
 public class Player
 {
+    public static final int[] SHIP_LENGTHS = {2, 3, 3, 4, 5};
     private Ship[] ships;
     private Grid player = new Grid();
-    private Grid computer = new Grid();
-    private String name;
-    public static final int[] SHIP_LENGTHS = {2, 3, 3, 4, 5};
-    
+    private Grid opponent = new Grid();
+    private String playerName;
     public Player(String name)
     {
         ships = new Ship[SHIP_LENGTHS.length];
@@ -13,23 +12,11 @@ public class Player
         {
             ships[i] = new Ship(SHIP_LENGTHS[i]);
         }
-        this.name = name;
+        name = playerName;
     }
-    public String getName()
+    public String getPlayerName()
     {
-        return name;
-    }
-    public void printMyShips()
-    {
-        player.printShips();
-    }
-    public void printOpponentGuesses()
-    {
-        computer.printStatus();
-    }
-    public void printMyGuesses()
-    {
-        player.printStatus();
+        return playerName;
     }
     public void chooseShipLocation(Ship s, int row, int col, int direction)
     {
@@ -37,14 +24,27 @@ public class Player
         s.setDirection(direction);
         player.addShip(s);
     }
-    public void recordOpponentGuess(int row, int col) {
-        if (player.hasShip(row, col))
+    public void printMyShips()
+    {
+        player.printShips();
+    }
+    public void printOpponentGuesses()
+    {
+        opponent.printStatus();
+    }
+    public void printMyGuesses()
+    {
+        player.printStatus();
+    }
+    public void recordOpponentGuess(int row, int col)
+    {
+        if(player.hasShip(row, col))
         {
-            computer.markHit(row, col);
+            opponent.markHit(row, col);
         }
-        else
-        {
-            computer.markMiss(row, col);
+        else{
+            opponent.markMiss(row, col);
         }
     }
+    
 }
