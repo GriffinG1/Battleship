@@ -1,19 +1,18 @@
 public class Ship
 {
-    private int direction;
-    private int length;
-    private int col;
     private int row;
+    private int col;
+    private int length;
+    private int direction;
     public static final int UNSET = -1;
     public static final int HORIZONTAL = 0;
     public static final int VERTICAL = 1;
-
     public Ship(int length)
     {
         this.length = length;
-        direction = UNSET;
         row = UNSET;
         col = UNSET;
+        direction = UNSET;
     }
     public boolean isLocationSet()
     {
@@ -33,16 +32,16 @@ public class Ship
     }
     public void setLocation(int row, int col)
     {
-        this.row = row - 97;
+        this.row = row;
         this.col = col;
     }
-    public void setDirection(int direction)
+    public int getDirection()
     {
-        this.direction = direction;
+        return direction;
     }
     public int getRow()
     {
-        return Character.forDigit(row + 97, 10);
+        return row;
     }
     public int getCol()
     {
@@ -52,9 +51,9 @@ public class Ship
     {
         return length;
     }
-    public int getDirection()
+    public void setDirection(int direction)
     {
-        return direction;
+        this.direction = direction;
     }
     private String directionToString()
     {
@@ -62,29 +61,22 @@ public class Ship
         {
             return "horizontal";
         }
-        else if(direction == VERTICAL)
+        if(direction == VERTICAL)
         {
             return "vertical";
         }
-        else
-        {
-            return "unset direction";
-        }
+        return "unset direction";
     }
     private String locationToString()
     {
-        if(isLocationSet())
+        if(this.isLocationSet() == false)
         {
-            char tempRow = (char) (row + 97);
-            return "(" + Character.toUpperCase(tempRow) + ", " + col + ")";
+            return "unset location";
         }
-        else
-        {
-            return "(unset location)";
-        }
+        return  row + ", " + col;
     }
     public String toString()
     {
-        return directionToString() + " ship of length " + length + " at " + locationToString();
+        return directionToString() + " ship of length " + length + " at " + "(" + locationToString() + ")";
     }
 }
