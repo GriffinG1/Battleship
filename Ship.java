@@ -33,7 +33,7 @@ public class Ship
     }
     public void setLocation(int row, int col)
     {
-        this.row = row - 97;
+        this.row = row;
         this.col = col;
     }
     public void setDirection(int direction)
@@ -42,7 +42,7 @@ public class Ship
     }
     public int getRow()
     {
-        return Character.forDigit(row + 97, 10);
+        return row;
     }
     public int getCol()
     {
@@ -62,26 +62,19 @@ public class Ship
         {
             return "horizontal";
         }
-        else if(direction == VERTICAL)
+        if(direction == VERTICAL)
         {
             return "vertical";
         }
-        else
-        {
-            return "unset direction";
-        }
+        return "unset direction";
     }
     private String locationToString()
     {
         if(isLocationSet())
         {
-            char tempRow = (char) (row + 97);
-            return "(" + Character.toUpperCase(tempRow) + ", " + col + ")";
+            return "(" + (char) (row + 97) + ", " + (col + 1) + ")";
         }
-        else
-        {
-            return "(unset location)";
-        }
+        return "(unset location)";
     }
     public String toString()
     {
