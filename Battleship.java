@@ -9,7 +9,7 @@ public class Battleship extends ConsoleProgram
     }
     public void printUserTurn(Player player)
     {
-        println(player.getName() + "'s Ships: ");
+        println(player.getPlayerName() + "'s Ships: ");
         player.printMyShips();
     }
     public void newGame(Player player)
@@ -27,7 +27,7 @@ public class Battleship extends ConsoleProgram
                 println("Invalid row, please try again.");
                 row = readLine("Input a row (A - J): ").toLowerCase();
             }
-            rowVal = (int) row.charAt(0);
+            rowVal = ((int) row.charAt(0)) - 97;
             int column = readInt("Input a column (1 - 10): ");
             while(column < 1 || column > 10)
             {
@@ -50,6 +50,8 @@ public class Battleship extends ConsoleProgram
             }
             
             println("Row: " + row + " rowVal: " + rowVal);
+            println("ColumnVal: " + column);
+            println("Direction: " + dir + " DirVal: " + direction);
             
             player.chooseShipLocation(ship, rowVal, column - 1, direction);
             println(ship);
