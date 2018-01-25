@@ -1,16 +1,15 @@
 public class Grid
 {
+    private static final String[] alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"};
     private Location[][] grid;
     public static final int NUM_ROWS = 10;
     public static final int NUM_COLS = 10;
-    public static final String[] alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"};
-    
     public Grid()
     {
         grid = new Location[NUM_COLS][NUM_ROWS];
-        for(int y = 0; y < NUM_ROWS; y++)
+        for (int y = 0; y < NUM_ROWS; y++) 
         {
-            for(int x = 0; x < NUM_COLS; x++)
+            for (int x = 0; x < NUM_COLS; x++) 
             {
                 grid[x][y] = new Location();
             }
@@ -18,21 +17,21 @@ public class Grid
     }
     public void markHit(int row, int col)
     {
-        grid[col][row].markHit();
+        grid[col][row].markHit(); 
     }
     public void markMiss(int row, int col)
     {
-        grid[col][row].markMiss();
+         grid[col][row].markMiss();
     }
     public void setStatus(int row, int col, int status)
     {
-        grid[col][row].setStatus(status);
+         grid[col][row].setStatus(status);
     }
     public int getStatus(int row, int col)
     {
         return grid[col][row].getStatus();
     }
-    public boolean alreadyGuessed(int row, int col)
+    public boolean alreadyGuessed(int row, int col)    
     {
         return !grid[col][row].isUnguessed();
     }
@@ -58,15 +57,13 @@ public class Grid
     }
     public void printStatus()
     {
-        System.out.print("");
-        for(int i = 0; i < NUM_COLS; i++)
+        for (int i = 0; i < NUM_COLS; i++) 
         {
-            System.out.print("  ");
-            if(i != 9)
+            if(i != 9) 
             {
                 System.out.print((i + 1) + " ");
             }
-            else
+            else 
             {
                 System.out.print(i+1);
             }
@@ -77,11 +74,11 @@ public class Grid
             System.out.print(alpha[y] + " ");
             for(int x = 0; x < NUM_COLS; x++)
             {
-                if (grid[x][y].checkHit())
+                if(grid[x][y].checkHit())
                 {
                     System.out.print("X ");
                 }
-                else if(grid[x][y].checkMiss())
+                else if (grid[x][y].checkMiss())
                 {
                     System.out.print("O ");
                 }
@@ -95,14 +92,14 @@ public class Grid
     }
     public void printShips()
     {
-        System.out.print("  ");
-        for(int i = 0; i < NUM_COLS; i++)
+        System.out.print("");
+        for (int i = 0; i < NUM_COLS; i++) 
         {
-            if(i != 9)
+            if(i != 9) 
             {
                 System.out.print((i + 1) + " ");
             }
-            else
+            else 
             {
                 System.out.print(i+1);
             }
@@ -117,7 +114,7 @@ public class Grid
                 {
                     System.out.print("X ");
                 }
-                else
+                else 
                 {
                     System.out.print("- ");
                 }
@@ -128,21 +125,21 @@ public class Grid
     public void addShip(Ship s)
     {
         int length = s.getLength();
-        int dir = s.getDirection();
+        int direction = s.getDirection();
         int row = s.getRow();
         int col = s.getCol();
-        if(dir == 1)
+        if(direction == 1)
         {
-            for(int y = row; y < (s.getLength() + row); y++)
+            for(int i = row; i < (s.getLength() + row); i++)
             {
-                setShip(y, col, true);
+                setShip(i, col, true);
             }
         }
         else
         {
-            for(int x = col; x < (s.getLength() + col); x++)
+            for(int j = col; j < (s.getLength() + col); j++)
             {
-                setShip(row, x, true);
+                setShip(row, j, true);
             }
         }
     }
